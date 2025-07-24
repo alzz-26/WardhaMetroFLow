@@ -10,76 +10,180 @@ WardhaMetroAI is an AI-powered metro simulation project built for the city of Wa
 
 This project envisions smarter, AI-driven public transit systems for emerging smart cities like Wardha.
 
+---
 
-## Features 🔧 
+##  Table of Contents
+- [About the Project](#about-the-project)
+- [Features](#features-)
+- [Tech Stack](#tech-stack-)
+- [Getting Started](#getting-started-)
+- [Views](#views-)
+- [Project Structure](#project-structure-)
+- [Contributing](#contributing-)
+- [Good First Issues](#good-first-issues-)
+- [License](#license-)
+- [Acknowledgments](#acknowledgments-)
+- [Back to Top](#wardhametroflow-)
 
+---
+
+## About the Project
+WardhaMetroFlow is an AI-powered metro simulation project built for the city of Wardha. It envisions a smarter public transport system for emerging smart cities by using AI-driven metro route planning and traffic prediction.
+
+---
+
+## Features 
 - Interactive metro route planner
-- AI-based route optimization and predictions
-- Real-time station and traffic simulation
-- Passenger and Admin dashboards
-- Clean, modular architecture for easy contributions
+- Real-time passenger & station simulation
+- AI-based route optimization & predictions
+- Passenger & Admin dashboards
+- Voice/text input (optional)
+- Modular and scalable codebase
 
+[Back to Top](#wardhametroflow-)
 
-## Tech Stack 🧠 
+---
 
-- **Frontend**: React.js / HTML / CSS / Leaflet.js (for map)
-- **Backend**: Python (Flask / FastAPI)
-- **AI/ML**: scikit-learn, pandas, NumPy
-- **Visualization**: Chart.js / Plotly
-- **Database**: MongoDB / Firebase / SQLite
+## Tech Stack 
 
+### Frontend
+- React.js
+- HTML / CSS / JavaScript
+- Leaflet.js (Map rendering)
 
-## Getting Started 🚀 
-(This section to be updated)
+### Backend
+- Python (Flask / FastAPI)
 
+### AI / ML
+- scikit-learn
+- pandas
+- NumPy
 
-## Views 🗺️ 
-- **Passenger View**
-- Select source and destination
-- View suggested routes and timing
-- See upcoming metro arrivals
-- Voice/text input supported (optional)
-- **Admin View**
-- Add/manage stations and routes
-- Monitor live traffic flow
-- Analyze predicted congestion using AI
-- Get alerts and optimization suggestions
+### Visualization
+- Chart.js
+- Plotly
 
+### Database
+- SQLite / Firebase / MongoDB
 
-## Project Structure 📁 
-- WardhaMetroAI/
-- ├── frontend/             # React frontend
-- ├── backend/              # Flask/FastAPI backend
-- ├── data/                 # Station and route datasets
-- ├── models/               # AI/ML models
-- ├── README.md
-- └── LICENSE
+[Back to Top](#wardhametroflow-)
 
+---
 
-## Contributing 🤝 
-- We welcome all contributors! Whether you're into frontend, backend, ML, or data — there's something for you.
-- Fork the repo
-- Create a branch: git checkout -b feature-name
-- Commit your changes: git commit -m "Added feature"
-- Push and open a Pull Request
-- Check out the CONTRIBUTING.md for more info.
+## Getting Started 
 
+>  Setup instructions are coming soon. Contributors are welcome to help improve this section._
 
-## Good First Issues 🐛 
-- Add a new station to the map
-- Create a sample route JSON
-- Improve route prediction accuracy
-- Style Passenger dashboard
-- Optimize admin data visualization
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/GSSoC-Flow/WardhaMetroFlow.git
+   ```
 
+2. Navigate to backend and install dependencies:
 
-## License 📄 
-This project is licensed under the MIT License.
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
 
+3. Navigate to frontend and run React app:
 
-## Acknowledgments ✨ 
-Inspired by India's smart city mission
-Built with live by open-source contributors for GSSoC '25
+   ```bash
+   cd ../frontend
+   npm install
+   npm start
+   ```
 
+###### [Back to Top](#wardhametroflow-)
+---
 
+## Views 
+### Passenger View
+* Select source & destination
+* Smart route suggestions
+* Arrival time estimates
+* Supports voice/text input (optional)
 
+### Admin View
+* Add/manage stations & routes
+* Live traffic monitoring
+* Analyze predicted congestion
+* Receive AI-driven optimization alerts
+
+###### [Back to Top](#wardhametroflow-)
+---
+
+## Project Structure
+```
+WardhaMetroFlow/
+│
+├── backend/          # Flask APIs and Python logic
+│   ├── app.py
+│   ├── routes/
+│   └── models/
+│
+├── frontend/         # React-based UI (Passenger/Admin)
+│   ├── passenger/
+│   └── admin/
+│
+├── ai-models/        # ML models for traffic prediction
+│   ├── model.pkl
+│   └── train_model.ipynb
+│
+├── database/         # SQLite DB and schema
+│   └── wardha.db
+│
+├── static/           # Images, icons, stylesheets
+│
+├── templates/        # HTML templates (Flask)
+│
+├── Contributing.md
+├── README.md
+└── LICENSE
+```
+
+###### [Back to Top](#wardhametroflow-)
+---
+## Contributing 
+We welcome all contributors — whether you're into frontend, backend, ML, or data!
+
+Steps:
+1. Fork the repository
+2. Create a branch:
+
+```bash
+git checkout -b feature-name
+```
+3. Commit your changes:
+
+```bash
+git commit -m "Added feature"
+```
+4. Push and open a Pull Request
+5. Refer to [Contributing.md](Contributing.md) for more.
+
+###### [Back to Top](#wardhametroflow-)
+---
+
+## Good First Issues 
+* Add a new station to the map
+* Create a sample route JSON
+* Improve route prediction accuracy
+* Style Passenger dashboard
+* Optimize Admin data visualization
+
+###### [Back to Top](#wardhametroflow-)
+---
+## License 
+This project is licensed under the [MIT LICENSE](LICENSE).
+
+###### [Back to Top](#wardhametroflow-)
+---
+
+## Acknowledgments 
+Inspired by India's Smart City Mission
+
+Built with ❤️ by open-source contributors during GSSoC 2025
+
+###### [Back to Top](#wardhametroflow-)
+---
