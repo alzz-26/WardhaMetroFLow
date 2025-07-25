@@ -72,4 +72,4 @@ Let’s build an inclusive space for learning together.
 | 1    | [@Manjushwarofficial](https://github.com/Manjushwarofficial) | Initial codebase |
 | 2    | [@SHISKEBAB](https://github.com/SHISKEBAB)  | Closes Issued #1 & #3 and currently Solved Issue #16, #17 & #19 |
 
-
+---
