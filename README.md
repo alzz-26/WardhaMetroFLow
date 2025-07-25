@@ -196,7 +196,7 @@ This project is licensed under the [MIT LICENSE](LICENSE).
 ## Acknowledgments 
 Inspired by India's Smart City Mission
 
-Built with ❤️ by open-source contributors during GSSoC 2025
+Built with love by open-source contributors during GSSoC 2025
 
 ###### [Back to Top](#top)
 ---
