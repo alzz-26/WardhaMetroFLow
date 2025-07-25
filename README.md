@@ -1,4 +1,5 @@
-# WardhaMetroFLow
+# WardhaMetroFlow 🚇
+
 An AI-powered metro simulation for the city of Wardha. It offers two views: Passenger View to plan routes and get smart suggestions, and Admin View to monitor traffic, manage stations, and analyze predictions (helping visualize a smarter transit future).
 
 # WardhaMetroFlow 🚇
@@ -11,19 +12,19 @@ WardhaMetroAI is an AI-powered metro simulation project built for the city of Wa
 This project envisions smarter, AI-driven public transit systems for emerging smart cities like Wardha.
 
 ---
-
+<span id="top"></span>
 ##  Table of Contents
 - [About the Project](#about-the-project)
-- [Features](#features-)
-- [Tech Stack](#tech-stack-)
-- [Getting Started](#getting-started-)
-- [Views](#views-)
-- [Project Structure](#project-structure-)
-- [Contributing](#contributing-)
-- [Good First Issues](#good-first-issues-)
-- [License](#license-)
-- [Acknowledgments](#acknowledgments-)
-- [Back to Top](#wardhametroflow-)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Views](#views)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [Good First Issues](#good-first-issues)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [Back to Top](#top)
 
 ---
 
@@ -40,7 +41,7 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 - Voice/text input (optional)
 - Modular and scalable codebase
 
-[Back to Top](#wardhametroflow-)
+[Back to Top](#top)
 
 ---
 
@@ -66,7 +67,7 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 ### Database
 - SQLite / Firebase / MongoDB
 
-[Back to Top](#wardhametroflow-)
+[Back to Top](#top)
 
 ---
 
@@ -94,7 +95,7 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
    npm start
    ```
 
-###### [Back to Top](#wardhametroflow-)
+###### [Back to Top](#top)
 ---
 
 ## Views 
@@ -110,7 +111,7 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 * Analyze predicted congestion
 * Receive AI-driven optimization alerts
 
-###### [Back to Top](#wardhametroflow-)
+###### [Back to Top](#top)
 ---
 
 ## Project Structure
@@ -141,8 +142,20 @@ WardhaMetroFlow/
 ├── README.md
 └── LICENSE
 ```
+###  System Architecture
 
-###### [Back to Top](#wardhametroflow-)
+Here's a overview of how the different components of WardhaMetroFlow interact:
+
+![System Architecture](static/Architecture.png)
+
+- **Frontend** (React) communicates with the **Flask backend**
+- **Backend** serves API routes and logic
+- **Database** (SQLite) stores metro and passenger data
+- **ML Model** (`model.pkl`) is used by the backend to make route or traffic predictions
+
+>  The diagram is located at `static/Architecture.png`. You can update it anytime using Visily, draw.io or Figma.
+
+###### [Back to Top](#top)
 ---
 ## Contributing 
 We welcome all contributors — whether you're into frontend, backend, ML, or data!
@@ -162,7 +175,7 @@ git commit -m "Added feature"
 4. Push and open a Pull Request
 5. Refer to [Contributing.md](Contributing.md) for more.
 
-###### [Back to Top](#wardhametroflow-)
+###### [Back to Top](#top)
 ---
 
 ## Good First Issues 
@@ -172,12 +185,12 @@ git commit -m "Added feature"
 * Style Passenger dashboard
 * Optimize Admin data visualization
 
-###### [Back to Top](#wardhametroflow-)
+###### [Back to Top](#top)
 ---
 ## License 
 This project is licensed under the [MIT LICENSE](LICENSE).
 
-###### [Back to Top](#wardhametroflow-)
+###### [Back to Top](#top)
 ---
 
 ## Acknowledgments 
@@ -185,5 +198,5 @@ Inspired by India's Smart City Mission
 
 Built with ❤️ by open-source contributors during GSSoC 2025
 
-###### [Back to Top](#wardhametroflow-)
+###### [Back to Top](#top)
 ---
