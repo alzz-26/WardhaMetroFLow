@@ -2,9 +2,7 @@
 
 An AI-powered metro simulation for the city of Wardha. It offers two views: Passenger View to plan routes and get smart suggestions, and Admin View to monitor traffic, manage stations, and analyze predictions (helping visualize a smarter transit future).
 
-# WardhaMetroFlow 🚇
-
-WardhaMetroAI is an AI-powered metro simulation project built for the city of Wardha. It offers two interactive views:
+It offers two interactive views:
 
 - **Passenger View**: Plan metro routes, get real-time smart suggestions, and estimate arrival times.
 - **Admin View**: Monitor metro traffic, manage stations, and analyze trends using predictive AI models.
