@@ -35,12 +35,10 @@ Whether you're contributing code, suggesting features, or just curious about the
 - [Acknowledgments](#acknowledgments)
 - [Back to Top](#top)
 
----
 
 ## About the Project
 WardhaMetroFlow is an AI-powered metro simulation project built for the city of Wardha. It envisions a smarter public transport system for emerging smart cities by using AI-driven metro route planning and traffic prediction.
 
----
 
 ## Features 
 - Interactive metro route planner
@@ -52,7 +50,6 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 
 [Back to Top](#top)
 
----
 
 ## Tech Stack 
 
@@ -78,7 +75,6 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 
 [Back to Top](#top)
 
----
 
 ## Getting Started 
 
@@ -105,7 +101,7 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
    ```
 
 ###### [Back to Top](#top)
----
+
 
 ## Views 
 ### Passenger View
@@ -121,7 +117,7 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 * Receive AI-driven optimization alerts
 
 ###### [Back to Top](#top)
----
+
 
 ## Project Structure
 ```
@@ -165,7 +161,7 @@ Here's a overview of how the different components of WardhaMetroFlow interact:
 >  The diagram is located at `static/Architecture.png`. You can update it anytime using Visily, draw.io or Figma.
 
 ###### [Back to Top](#top)
----
+
 ## Contributing 
 We welcome all contributors — whether you're into frontend, backend, ML, or data!
 
@@ -185,7 +181,7 @@ git commit -m "Added feature"
 5. Refer to [Contributing.md](Contributing.md) for more.
 
 ###### [Back to Top](#top)
----
+
 
 ## Good First Issues 
 * Add a new station to the map
@@ -195,12 +191,12 @@ git commit -m "Added feature"
 * Optimize Admin data visualization
 
 ###### [Back to Top](#top)
----
+
 ## License 
 This project is licensed under the [MIT LICENSE](LICENSE).
 
 ###### [Back to Top](#top)
----
+
 
 ## Acknowledgments 
 Inspired by India's Smart City Mission
@@ -208,5 +204,5 @@ Inspired by India's Smart City Mission
 Built with love by open-source contributors during GSSoC 2025
 
 ###### [Back to Top](#top)
----
+
 
