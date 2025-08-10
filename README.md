@@ -1,4 +1,4 @@
-# WardhaMetroFlow 🚇
+# WardhaMetroFlow 
 
 An AI-powered metro simulation for the city of Wardha. It offers two views: Passenger View to plan routes and get smart suggestions, and Admin View to monitor traffic, manage stations, and analyze predictions (helping visualize a smarter transit future).
 
@@ -13,7 +13,7 @@ This project envisions smarter, AI-driven public transit systems for emerging sm
 
 Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
 
-[**Join our Discord Server**]([https://your-discord-invite-link](https://discord.gg/NRB8eUA8))  
+[**Join our Discord Server**](https://discord.gg/NRB8eUA8)  
 
 Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
 
