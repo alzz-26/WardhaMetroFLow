@@ -9,7 +9,14 @@ It offers two interactive views:
 
 This project envisions smarter, AI-driven public transit systems for emerging smart cities like Wardha.
 
----
+# Join Our Community
+
+Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
+
+[**Join our Discord Server**]([https://your-discord-invite-link](https://discord.gg/NRB8eUA8))  
+
+Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
+
 <span id="top"></span>
 ##  Table of Contents
 - [About the Project](#about-the-project)
