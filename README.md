@@ -9,6 +9,10 @@ It offers two interactive views:
 
 This project envisions smarter, AI-driven public transit systems for emerging smart cities like Wardha.
 
+# Featured Website Image
+<img width="1880" height="1192" alt="image" src="https://github.com/user-attachments/assets/edca8c04-04c8-452b-b46c-a9c336b4f181" />
+
+
 # Join Our Community
 
 Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
