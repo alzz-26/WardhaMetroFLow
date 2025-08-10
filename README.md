@@ -196,12 +196,6 @@ Inspired by India's Smart City Mission
 
 Built with love by open-source contributors during GSSoC 2025
 
-<<<<<<< HEAD
-###### [Back to Top](#top)
----
-=======
----
 ###### [Back to Top](#top)
 ---
 
->>>>>>> 63cb9ef0bb3f619eea1fda2b41cd006b97ef41f6
