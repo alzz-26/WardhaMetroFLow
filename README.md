@@ -10,7 +10,7 @@ It offers two interactive views:
 This project envisions smarter, AI-driven public transit systems for emerging smart cities like Wardha.
 
 # Featured Website Image
-<img width="1880" height="1192" alt="image" src="https://github.com/user-attachments/assets/edca8c04-04c8-452b-b46c-a9c336b4f181" />
+<img width="1880" height="1192" alt="image" src="https://github.com/user-attachments/assets/687c003b-e22b-4899-82f2-97927d71ced4" />
 
 
 # Join Our Community
