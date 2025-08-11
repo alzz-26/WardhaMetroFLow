@@ -143,7 +143,9 @@ WardhaMetroFlow/
 │
 ├── templates/        # HTML templates (Flask)
 │
-├── Contributing.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── CONTRIBUTORS.md
 ├── README.md
 └── LICENSE
 ```
