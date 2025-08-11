@@ -139,8 +139,13 @@ WardhaMetroFlow/
 ├── database/              # SQLite database
 │   └── wardha.db
 │
-├── frontend/              # Frontend (Passenger/Admin UI)
+frontend/         # frontend (Passenger/Admin UI)
+│
+├── passenger/
 │   └── passenger.html
+│
+└── admin/
+    └── admin.html
 │
 ├── static/                # Static assets
 │   └── Architecture.png
