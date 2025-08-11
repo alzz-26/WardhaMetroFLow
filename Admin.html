@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WardhaMetroFlow - Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff7e00, #00b86b);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(5px);
+    }
+
+    header .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffe066;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffe066;
+    }
+
+    .panels {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.15);
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .panel h2 {
+      margin-bottom: 1rem;
+    }
+
+    .traffic-map {
+      height: 250px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🚈 WardhaMetroFlow - Admin</div>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Stations</a>
+      <a href="#">Traffic</a>
+      <a href="#">Predictions</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="stats-grid">
+      <div class="card">
+        <h3>Total Passengers Today</h3>
+        <p class="number">12,458</p>
+      </div>
+      <div class="card">
+        <h3>Active Trains</h3>
+        <p class="number">18</p>
+      </div>
+      <div class="card">
+        <h3>Avg. Delay</h3>
+        <p class="number">2.4 min</p>
+      </div>
+      <div class="card">
+        <h3>Predicted Peak Hour</h3>
+        <p class="number">6:00 PM</p>
+      </div>
+    </section>
+
+    <section class="panels">
+      <div class="panel">
+        <h2>Live Traffic Monitor</h2>
+        <canvas id="trafficChart" height="200"></canvas>
+      </div>
+      <div class="panel">
+        <h2>AI Predictions</h2>
+        <ul>
+          <li>Tomorrow’s expected ridership: <strong>+8%</strong></li>
+          <li>High congestion at <strong>Market Square</strong> station</li>
+          <li>Recommended adding 2 extra trains on Orange Line</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 WardhaMetroFlow | Admin Dashboard
+  </footer>
+
+  <!-- Chart.js for live traffic graph -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('trafficChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'],
+        datasets: [{
+          label: 'Passengers per Hour',
+          data: [1200, 1900, 2300, 1800, 2400, 3000, 2000],
+          borderColor: '#ffe066',
+          backgroundColor: 'rgba(255, 224, 102, 0.2)',
+          tension: 0.3,
+          fill: true
+        }]
+      },
+      options: {
+        plugins: { legend: { labels: { color: 'white' } } },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
