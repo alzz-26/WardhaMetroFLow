@@ -1,0 +1,1096 @@
+        .station-management {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+        }
+
+        .station-form {
+            background: linear-gradient(135deg, #ffffff, var(--cream-color));
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.1);
+        }
+
+        .station-list {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.1);
+        }
+
+        .station-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(234, 88, 12, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .station-item:hover {
+            background: var(--cream-color);
+            transform: translateX(5px);
+        }
+
+        .station-item:last-child {
+            border-bottom: none;
+        }
+
+        .station-status {
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .status-active {
+            background: linear-gradient(135deg, var(--success-color), var(--accent-color));
+            color: white;
+        }
+
+        .status-maintenance {
+            background: linear-gradient(135deg, var(--warning-color), #fb923c);
+            color: white;
+        }
+
+        .traffic-monitor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .traffic-card {
+            background: linear-gradient(135deg, #ffffff, var(--cream-color));
+            padding: 2rem;<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WardhaMetroFlow - AI-Powered Metro System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ea580c;
+            --secondary-color: #c2410c;
+            --success-color: #16a34a;
+            --accent-color: #22c55e;
+            --warning-color: #f97316;
+            --danger-color: #dc2626;
+            --dark-color: #1f2937;
+            --light-color: #fef7ed;
+            --cream-color: #fffbeb;
+            --border-color: #fed7aa;
+            --text-primary: #1c1917;
+            --text-secondary: #78716c;
+            --natural-bg: #f5f5f4;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 25%, #86efac 75%, #4ade80 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(234, 88, 12, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(234, 88, 12, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-shadow: 0 1px 2px rgba(234, 88, 12, 0.1);
+        }
+
+        .logo i {
+            margin-right: 0.7rem;
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--success-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            background: rgba(234, 88, 12, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 0.7rem;
+            background: var(--cream-color);
+            padding: 0.4rem;
+            border-radius: 30px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .toggle-btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--warning-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .toggle-btn:not(.active):hover {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--success-color);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .view-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            min-height: 85vh;
+            border: 1px solid rgba(234, 88, 12, 0.1);
+        }
+
+        .view-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--warning-color), var(--success-color));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" fill="rgba(255,255,255,0.1)"><circle cx="10" cy="10" r="1"/><circle cx="30" cy="10" r="1"/><circle cx="50" cy="10" r="1"/><circle cx="70" cy="10" r="1"/><circle cx="90" cy="10" r="1"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100px); }
+        }
+
+        .view-header h2 {
+            font-size: 2.4rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-header p {
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+            font-size: 1.1rem;
+        }
+
+        .view-content {
+            padding: 3rem 2rem;
+            background: linear-gradient(to bottom, var(--cream-color), #ffffff);
+        }
+
+        /* Passenger View Styles */
+        .route-planner {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .planner-form {
+            background: linear-gradient(135deg, #ffffff, var(--cream-color));
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .planner-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--warning-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), var(--accent-color));
+            color: white;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+        }
+
+        .btn-voice {
+            background: linear-gradient(135deg, var(--warning-color), #fb923c);
+            color: white;
+            margin-left: 1rem;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-voice:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        .map-container {
+            background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+            border-radius: 20px;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            border: 2px solid var(--border-color);
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" fill="rgba(234,88,12,0.05)"><path d="M30 10L50 20L40 40L20 40L10 20Z"/></svg>');
+            background-size: 120px 120px;
+            opacity: 0.3;
+        }
+
+        .route-suggestions {
+            background: linear-gradient(135deg, #ffffff, var(--cream-color));
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.1);
+        }
+
+        .route-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--success-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .route-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .route-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            border-left-color: var(--primary-color);
+        }
+
+        .route-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .route-time {
+            font-weight: bold;
+            color: var(--success-color);
+        }
+
+        .route-distance {
+            color: var(--text-secondary);
+        }
+
+        /* Admin View Styles */
+        .admin-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-card {
+            background: linear-gradient(135deg, #ffffff, var(--cream-color));
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(234, 88, 12, 0.03), transparent);
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .dashboard-card i {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .dashboard-card.stations i {
+            background: linear-gradient(45deg, var(--primary-color), var(--warning-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-card.traffic i {
+            background: linear-gradient(45deg, var(--warning-color), #fb923c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-card.predictions i {
+            background: linear-gradient(45deg, var(--success-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+            color: var(--text-primary);
+        }
+
+        .dashboard-card .metric {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--success-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard-card p {
+            position: relative;
+            z-index: 1;
+            color: var(--text-secondary);
+        }
+
+        .admin-tabs {
+            display: flex;
+            background: linear-gradient(135deg, var(--cream-color), #ffffff);
+            border-radius: 15px;
+            padding: 0.8rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .tab-btn.active {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
+        }
+
+        .tab-btn.active::before {
+            width: 80%;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(234, 88, 12, 0.05);
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .station-management {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .station-form {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .station-list {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .station-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .station-item:last-child {
+            border-bottom: none;
+        }
+
+        .station-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-maintenance {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .traffic-monitor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .traffic-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .traffic-level {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .level-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .level-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .level-low { background: var(--success-color); }
+        .level-medium { background: var(--warning-color); }
+        .level-high { background: var(--danger-color); }
+
+        .chart-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .route-planner {
+                grid-template-columns: 1fr;
+            }
+
+            .station-management {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Voice Input Animation */
+        .voice-active {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Hide views initially */
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <i class="fas fa-subway"></i>
+                WardhaMetroFlow
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#routes">Routes</a></li>
+                <li><a href="#stations">Stations</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="view-toggle">
+                <button class="toggle-btn active" onclick="switchView('passenger')">
+                    <i class="fas fa-user"></i> Passenger
+                </button>
+                <button class="toggle-btn" onclick="switchView('admin')">
+                    <i class="fas fa-cog"></i> Admin
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content container">
+        <!-- Passenger View -->
+        <div id="passenger-view" class="view active">
+            <div class="view-container fade-in">
+                <div class="view-header">
+                    <h2><i class="fas fa-route"></i> Plan Your Journey</h2>
+                    <p>Find the fastest route to your destination with AI-powered suggestions</p>
+                </div>
+                <div class="view-content">
+                    <div class="route-planner">
+                        <div class="planner-form">
+                            <h3>Route Planner</h3>
+                            <div class="form-group">
+                                <label for="source">From</label>
+                                <select id="source" class="form-control">
+                                    <option value="">Select source station</option>
+                                    <option value="wardha-central">Wardha Central</option>
+                                    <option value="railway-station">Railway Station</option>
+                                    <option value="market-square">Market Square</option>
+                                    <option value="hospital">Civil Hospital</option>
+                                    <option value="college">Wardha College</option>
+                                    <option value="industrial">Industrial Area</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">To</label>
+                                <select id="destination" class="form-control">
+                                    <option value="">Select destination station</option>
+                                    <option value="wardha-central">Wardha Central</option>
+                                    <option value="railway-station">Railway Station</option>
+                                    <option value="market-square">Market Square</option>
+                                    <option value="hospital">Civil Hospital</option>
+                                    <option value="college">Wardha College</option>
+                                    <option value="industrial">Industrial Area</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="departure-time">Departure Time</label>
+                                <input type="datetime-local" id="departure-time" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" onclick="findRoute()">
+                                <i class="fas fa-search"></i> Find Route
+                            </button>
+                            <button class="btn btn-voice" onclick="toggleVoiceInput()" id="voice-btn">
+                                <i class="fas fa-microphone"></i> Voice Input
+                            </button>
+                        </div>
+                        <div class="map-container" id="passenger-map">
+                            <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: #9ca3af; margin-right: 1rem;"></i>
+                            Interactive Metro Map will be displayed here
+                        </div>
+                    </div>
+
+                    <div id="route-results" class="route-suggestions" style="display: none;">
+                        <h3><i class="fas fa-lightbulb"></i> Smart Route Suggestions</h3>
+                        <div id="routes-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin View -->
+        <div id="admin-view" class="view">
+            <div class="view-container fade-in">
+                <div class="view-header">
+                    <h2><i class="fas fa-chart-line"></i> Metro Control Center</h2>
+                    <p>Monitor traffic, manage stations, and optimize the metro system with AI insights</p>
+                </div>
+                <div class="view-content">
+                    <div class="admin-dashboard">
+                        <div class="dashboard-card stations">
+                            <i class="fas fa-building"></i>
+                            <h3>Total Stations</h3>
+                            <div class="metric">6</div>
+                            <p>All operational</p>
+                        </div>
+                        <div class="dashboard-card traffic">
+                            <i class="fas fa-traffic-light"></i>
+                            <h3>Live Traffic</h3>
+                            <div class="metric">Medium</div>
+                            <p>Peak hours detected</p>
+                        </div>
+                        <div class="dashboard-card predictions">
+                            <i class="fas fa-brain"></i>
+                            <h3>AI Predictions</h3>
+                            <div class="metric">95%</div>
+                            <p>Accuracy rate</p>
+                        </div>
+                    </div>
+
+                    <div class="admin-tabs">
+                        <button class="tab-btn active" onclick="switchTab('stations')">Station Management</button>
+                        <button class="tab-btn" onclick="switchTab('traffic')">Traffic Monitor</button>
+                        <button class="tab-btn" onclick="switchTab('analytics')">Analytics</button>
+                        <button class="tab-btn" onclick="switchTab('predictions')">AI Predictions</button>
+                    </div>
+
+                    <!-- Station Management Tab -->
+                    <div id="stations-tab" class="tab-content active">
+                        <div class="station-management">
+                            <div class="station-form">
+                                <h3>Add New Station</h3>
+                                <div class="form-group">
+                                    <label for="station-name">Station Name</label>
+                                    <input type="text" id="station-name" class="form-control" placeholder="Enter station name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="station-type">Station Type</label>
+                                    <select id="station-type" class="form-control">
+                                        <option value="terminal">Terminal</option>
+                                        <option value="interchange">Interchange</option>
+                                        <option value="regular">Regular</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="station-location">Location</label>
+                                    <input type="text" id="station-location" class="form-control" placeholder="Enter coordinates or address">
+                                </div>
+                                <button class="btn btn-success" onclick="addStation()">
+                                    <i class="fas fa-plus"></i> Add Station
+                                </button>
+                            </div>
+                            <div class="station-list">
+                                <h3 style="padding: 1rem 1.5rem; margin: 0; background: var(--light-color);">Existing Stations</h3>
+                                <div class="station-item">
+                                    <div>
+                                        <strong>Wardha Central</strong>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Terminal Station</div>
+                                    </div>
+                                    <span class="station-status status-active">Active</span>
+                                </div>
+                                <div class="station-item">
+                                    <div>
+                                        <strong>Railway Station</strong>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Interchange</div>
+                                    </div>
+                                    <span class="station-status status-active">Active</span>
+                                </div>
+                                <div class="station-item">
+                                    <div>
+                                        <strong>Market Square</strong>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Regular Station</div>
+                                    </div>
+                                    <span class="station-status status-maintenance">Maintenance</span>
+                                </div>
+                                <div class="station-item">
+                                    <div>
+                                        <strong>Civil Hospital</strong>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Regular Station</div>
+                                    </div>
+                                    <span class="station-status status-active">Active</span>
+                                </div>
+                                <div class="station-item">
+                                    <div>
+                                        <strong>Wardha College</strong>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Regular Station</div>
+                                    </div>
+                                    <span class="station-status status-active">Active</span>
+                                </div>
+                                <div class="station-item">
+                                    <div>
+                                        <strong>Industrial Area</strong>
+                                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Terminal Station</div>
+                                    </div>
+                                    <span class="station-status status-active">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Traffic Monitor Tab -->
+                    <div id="traffic-tab" class="tab-content">
+                        <div class="traffic-monitor">
+                            <div class="traffic-card">
+                                <h4><i class="fas fa-train"></i> Line 1 Traffic</h4>
+                                <p>Central → Industrial</p>
+                                <div class="traffic-level">
+                                    <span>Low</span>
+                                    <div class="level-bar">
+                                        <div class="level-fill level-low" style="width: 30%;"></div>
+                                    </div>
+                                    <span>High</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                    24 passengers/train
+                                </p>
+                            </div>
+                            <div class="traffic-card">
+                                <h4><i class="fas fa-train"></i> Line 2 Traffic</h4>
+                                <p>Railway → College</p>
+                                <div class="traffic-level">
+                                    <span>Low</span>
+                                    <div class="level-bar">
+                                        <div class="level-fill level-medium" style="width: 65%;"></div>
+                                    </div>
+                                    <span>High</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                    56 passengers/train
+                                </p>
+                            </div>
+                            <div class="traffic-card">
+                                <h4><i class="fas fa-train"></i> Line 3 Traffic</h4>
+                                <p>Hospital → Market</p>
+                                <div class="traffic-level">
+                                    <span>Low</span>
+                                    <div class="level-bar">
+                                        <div class="level-fill level-high" style="width: 85%;"></div>
+                                    </div>
+                                    <span>High</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                    78 passengers/train
+                                </p>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3><i class="fas fa-chart-area"></i> Real-time Traffic Analytics</h3>
+                            <div id="traffic-chart" style="height: 300px; display: flex; align-items: center; justify-content: center; background: var(--light-color); border-radius: 10px; color: var(--text-secondary);">
+                                <i class="fas fa-chart-line" style="font-size: 2rem; margin-right: 1rem;"></i>
+                                Interactive traffic charts will be displayed here
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Tab -->
+                    <div id="analytics-tab" class="tab-content">
+                        <div class="admin-dashboard">
+                            <div class="dashboard-card">
+                                <i class="fas fa-users" style="color: var(--primary-color);"></i>
+                                <h3>Daily Passengers</h3>
+                                <div class="metric">12,450</div>
+                                <p>+8% from yesterday</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-clock" style="color: var(--success-color);"></i>
+                                <h3>Avg Journey Time</h3>
+                                <div class="metric">18 min</div>
+                                <p>2 min faster than target</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-percentage" style="color: var(--warning-color);"></i>
+                                <h3>On-time Performance</h3>
+                                <div class="metric">94.2%</div>
+                                <p>Above industry standard</p>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3><i class="fas fa-chart-bar"></i> Weekly Performance Metrics</h3>
+                            <div style="height: 300px; display: flex; align-items: center; justify-content: center; background: var(--light-color); border-radius: 10px; color: var(--text-secondary);">
+                                <i class="fas fa-chart-bar" style="font-size: 2rem; margin-right: 1rem;"></i>
+                                Performance analytics charts will be displayed here
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Predictions Tab -->
+                    <div id="predictions-tab" class="tab-content">
+                        <div class="admin-dashboard">
+                            <div class="dashboard-card">
+                                <i class="fas fa-brain" style="color: var(--primary-color);"></i>
+                                <h3>Peak Hour Prediction</h3>
+                                <div class="metric">8:30 AM</div>
+                                <p>Expected congestion level: High</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-exclamation-triangle" style="color: var(--danger-color);"></i>
+                                <h3>Maintenance Alert</h3>
+                                <div class="metric">Line 2</div>
+                                <p>Schedule maintenance in 3 days</p>
+                            </div>
+                            <div class="dashboard-card">
+                                <i class="fas fa-route" style="color: var(--success-color);"></i>
+                                <h3>Route Optimization</h3>
+                                <div class="metric">15%</div>
+                                <p>Efficiency improvement suggested</p>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <h3><i class="fas fa-crystal-ball"></i> AI Prediction Models</h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                <div style="background: var(--light-color); padding: 1.5rem; border-radius: 10px;">
+                                    <h4><i class="fas fa-users"></i> Passenger Flow Model</h4>
+                                    <p>Predicts passenger volumes based on historical data, events, and weather conditions.</p>
+                                    <div style="background: var(--success-color); color: white; padding: 0.5rem; border-radius: 5px; text-align: center; margin-top: 1rem;">
+                                        Accuracy: 94.2%
+                                    </div>
+                                </div>
+                                <div style="background: var(--light-color); padding: 1.5rem; border-radius: 10px;">
+                                    <h4><i class="fas fa-tools"></i> Maintenance Predictor</h4>
+                                    <p>Identifies potential equipment failures and optimal maintenance schedules.</p>
+                                    <div style="background: var(--warning-color); color: white; padding: 0.5rem; border-radius: 5px; text-align: center; margin-top: 1rem;">
+                                        Accuracy: 89.7%
+                                    </div>
+                                </div>
+                                <div style="background: var(--light-color); padding: 1.5rem; border-radius: 10px;">
+                                    <h4><i class="fas fa-route"></i> Route Optimizer</h

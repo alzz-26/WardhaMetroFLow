@@ -1,13 +1,28 @@
+import os
+from datetime import datetime
 from flask import Flask, request, jsonify
+from models.models import db , Station, Route, PassengerLog
 import joblib
 import pandas as pd
-import os
 
-app = Flask(__name__)
+
+app= Flask(__name__)
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DB_PATH = os.path.join(BASE_DIR, 'database', 'wardha.db')
 
 # Corrected model path - added ../
 model_path = os.path.join(os.path.dirname(__file__), '../ai-models/passenger_flow_model.pkl')
 model = joblib.load(model_path)
+
+os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{DB_PATH}"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+db.init_app(app)
+
 
 @app.route('/predict_flow', methods=['POST'])
 def predict_passenger_flow():
@@ -38,7 +53,7 @@ def predict_passenger_flow():
 @app.route('/')
 def home():
     return "WardhaMetroFlow API is running!"
-    
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
-
