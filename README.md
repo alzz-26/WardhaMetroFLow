@@ -123,31 +123,34 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 ```
 WardhaMetroFlow/
 │
-├── backend/          # Flask APIs and Python logic
-│   ├── app.py
-│   ├── routes/
-│   └── models/
+├── ai-models/             # AI/ML models and training scripts
+│   ├── passenger_flow_model.py
 │
-├── frontend/         # React-based UI (Passenger/Admin)
-│   ├── passenger/
-│   └── admin/
-│
-├── ai-models/        # ML models for traffic prediction
+├── api_models/            # Pre-trained model files and notebooks
 │   ├── model.pkl
 │   └── train_model.ipynb
 │
-├── database/         # SQLite DB and schema
+├── backend/               # Backend logic (Flask/FastAPI)
+│   ├── app.py
+│   └── models/
+│       ├── __init__.py
+│       └── models.py
+│
+├── database/              # SQLite database
 │   └── wardha.db
 │
-├── static/           # Images, icons, stylesheets
+├── frontend/              # Frontend (Passenger/Admin UI)
+│   └── passenger.html
 │
-├── templates/        # HTML templates (Flask)
+├── static/                # Static assets
+│   └── Architecture.png
 │
 ├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── CONTRIBUTORS.md
-├── README.md
-└── LICENSE
+├── Contributing.md
+├── Contributors.md
+├── LICENSE
+└── README.md
+
 ```
 ###  System Architecture
 
