@@ -21,7 +21,7 @@ cd WardhaMetroFLow
 
 
 
-### 3. Backend Setup (Flask)
+### 3. Backend Setup (Flask + AI Model)
 Make sure you have Python 3.8+ installed.
 
 #### Create a virtual environment:
@@ -31,11 +31,27 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 #### Install dependencies:
+We keep our backend dependencies in requirements.txt. To install:
 ```bash
-pip install flask
+pip install -r requirements.txt
 ```
+
+If you’ve added a new Python package, update the file with:
+```bash
+pip freeze > requirements.txt
+```
+
+#### Generating the AI Model file (passenger_flow_model.pkl)
+The backend requires a pre-trained passenger flow prediction model stored at: ai-models/passenger_flow_model.pkl
+If this file is missing, you must generate it before running the server.
+From the project root, run:
+```bash
+python ai-models/passenger_flow_model.py
+```
+
 #### Run the backend server:
 ```bash
+cd backend
 python app.py
 ```
 The backend will start at: [Preview site](http://localhost:5000)
@@ -43,12 +59,10 @@ The backend will start at: [Preview site](http://localhost:5000)
 
 
 ### 4. Frontend Setup (React)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Frontend runs at http://localhost:5173 (default for Vite)
+At the moment, the frontend is a static HTML page (passenger.html) located inside frontend/.
+Simply open the file in your browser to test it.
+
+Future Plan: We will migrate to a Node.js/React-based frontend. Keep an eye on issues for updates.
 
 
 
