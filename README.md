@@ -16,7 +16,7 @@ This project envisions smarter, AI-driven public transit systems for emerging sm
 
 <img width="635" height="573" alt="image" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
 
-
+[Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)
 
 # Join Our Community
 
