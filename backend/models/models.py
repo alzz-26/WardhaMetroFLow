@@ -8,25 +8,44 @@ class Station(db.Model):
 
   id= db.Column(db.Integer, primary_key =True)
   name= db.Column(db.String(100), nullable= False)
+  station_type= db.Column(db.String(100), nullable= False)
+  coordinates= db.Column(db.String, unique= True, nullable= False)
+  connections= db.Column(db.String , nullable= True)
+  lies_on= db.Column(db.String(10), nullable= False)
   location= db.Column(db.String(200), nullable=False)
-  code= db.Column(db.String(10), unique=True, nullable=False)
   is_active= db.Column(db.Boolean, nullable=False)
-
+  
   start_routes= db.relationship('Route', foreign_keys="Route.start_station_id", back_populates="start_station")
   end_routes= db.relationship('Route', foreign_keys="Route.end_station_id", back_populates="end_station")
   boarding_passenger_logs= db.relationship("PassengerLog",foreign_keys="PassengerLog.boarding_station_id", back_populates="boarding_station")
   alighting_passenger_logs= db.relationship("PassengerLog",foreign_keys="PassengerLog.alighting_station_id", back_populates="alighting_station")
 
+  def get_connections(self):
+    return self.connections.split(',') if self.connections else []
+  
+  def set_connections(self, conn_list):
+    self.connections= ','.join(conn_list)
+
+  def get_coordinates(self):
+    coor= self.coordinates.split(',')
+    return [float(val) for val in coor]
+  
+
 class Route(db.Model):
   __tablename__="routes"
 
   id= db.Column(db.Integer, primary_key=True)
+  route_name= db.Column(db.String(100), nullable= True)
   start_station_id= db.Column(db.Integer, db.ForeignKey('stations.id'), nullable=False)
   end_station_id= db.Column(db.Integer, db.ForeignKey('stations.id'), nullable=False)
   distance= db.Column(db.Float, nullable=True)
   travel_time= db.Column(db.Float, nullable=True)
   duration_min = db.Column(db.Float, nullable=True)
   is_active= db.Column(db.Boolean, nullable=False)
+  lies_on= db.Column(db.String(100), nullable=False)
+
+# travel_time = manual time to travel this distance
+# duration_min = minimum time to travel this distance by vehicle
 
 
   start_station= db.relationship('Station', foreign_keys=[start_station_id], back_populates="start_routes")
