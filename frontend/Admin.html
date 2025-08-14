@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WardhaMetroFlow - Admin Dashboard</title>
@@ -207,10 +208,267 @@
       </div>
     </section>
   </main>
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WardhaMetroFlow - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <i class="fas fa-subway"></i>
+                WardhaMetroFlow Admin
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard" class="active" onclick="showSection('dashboard')">Dashboard</a></li>
+                <li><a href="#stations" onclick="showSection('stations')">Stations</a></li>
+                <li><a href="#traffic" onclick="showSection('traffic')">Traffic</a></li>
+                <li><a href="#predictions" onclick="showSection('predictions')">AI Predictions</a></li>
+                <li><a href="#analytics" onclick="showSection('analytics')">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <footer>
-    © 2025 WardhaMetroFlow | Admin Dashboard
-  </footer>
+    <main class="main-content container">
+        <!-- Page Header -->
+        <section class="page-header fade-in">
+            <h1><i class="fas fa-chart-line"></i> Metro Control Center</h1>
+            <p>Monitor traffic, manage stations, and optimize the metro system with AI insights</p>
+        </section>
+
+        <!-- Dashboard Overview -->
+        <section id="dashboard" class="dashboard-section active">
+            <div class="dashboard-overview fade-in">
+                <div class="overview-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Total Passengers Today</h3>
+                    <div class="metric">12,458</div>
+                    <div class="trend positive">+8% from yesterday</div>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-train"></i>
+                    <h3>Active Trains</h3>
+                    <div class="metric">18</div>
+                    <div class="trend positive">All lines operational</div>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Average Delay</h3>
+                    <div class="metric">2.4 min</div>
+                    <div class="trend negative">+0.3 min from target</div>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI Prediction Accuracy</h3>
+                    <div class="metric">94.2%</div>
+                    <div class="trend positive">+2.1% improvement</div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Sections -->
+            <div class="dashboard-sections">
+                <div class="main-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-area"></i> Live Traffic Monitor</h2>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" onclick="switchChart('hourly')">Hourly</button>
+                            <button class="chart-btn" onclick="switchChart('daily')">Daily</button>
+                            <button class="chart-btn" onclick="switchChart('weekly')">Weekly</button>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <div class="traffic-chart-container">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="side-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-exclamation-triangle"></i> Live Alerts</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="alert-item critical">
+                            <i class="fas fa-exclamation-circle alert-icon critical"></i>
+                            <div class="alert-content">
+                                <div class="alert-title">High Congestion Alert</div>
+                                <div class="alert-description">Market Square station experiencing 85% capacity</div>
+                            </div>
+                        </div>
+                        <div class="alert-item warning">
+                            <i class="fas fa-clock alert-icon warning"></i>
+                            <div class="alert-content">
+                                <div class="alert-title">Delay Warning</div>
+                                <div class="alert-description">Line 2 delayed by 5 minutes due to maintenance</div>
+                            </div>
+                        </div>
+                        <div class="alert-item info">
+                            <i class="fas fa-info-circle alert-icon info"></i>
+                            <div class="alert-content">
+                                <div class="alert-title">Peak Hour Approaching</div>
+                                <div class="alert-description">Expected high traffic in next 30 minutes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stations Management Section -->
+        <section id="stations" class="dashboard-section">
+            <div class="main-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-building"></i> Station Management</h2>
+                    <button class="btn btn-edit" onclick="showAddStationModal()">
+                        <i class="fas fa-plus"></i> Add Station
+                    </button>
+                </div>
+                <div class="section-content">
+                    <table class="station-table">
+                        <thead>
+                            <tr>
+                                <th>Station Name</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Passenger Load</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stationsTableBody">
+                            <!-- Stations will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Traffic Analysis Section -->
+        <section id="traffic" class="dashboard-section">
+            <div class="dashboard-sections">
+                <div class="main-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-traffic-light"></i> Traffic Analysis</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="traffic-chart-container">
+                            <canvas id="trafficAnalysisChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-pie"></i> Station Load Distribution</h2>
+                    </div>
+                    <div class="section-content">
+                        <canvas id="stationLoadChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Predictions Section -->
+        <section id="predictions" class="dashboard-section">
+            <div class="dashboard-sections">
+                <div class="main-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-brain"></i> AI Predictions & Insights</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="prediction-item">
+                            <div class="prediction-header">
+                                <div class="prediction-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="prediction-title">Peak Hour Prediction</div>
+                            </div>
+                            <div class="prediction-description">
+                                Tomorrow's peak hour is expected at 6:00 PM with 15% higher ridership than usual. 
+                                Consider adding 2 extra trains on the Orange Line between 5:30 PM and 7:30 PM.
+                            </div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-header">
+                                <div class="prediction-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="prediction-title">Maintenance Alert</div>
+                            </div>
+                            <div class="prediction-description">
+                                Line 2 equipment shows 87% wear. Schedule maintenance within 3 days to prevent 
+                                potential failures during peak hours.
+                            </div>
+                        </div>
+                        <div class="prediction-item">
+                            <div class="prediction-header">
+                                <div class="prediction-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="prediction-title">Route Optimization</div>
+                            </div>
+                            <div class="prediction-description">
+                                AI analysis suggests 15% efficiency improvement by adjusting train intervals 
+                                on Line 1 during off-peak hours (10 AM - 2 PM).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-line"></i> Prediction Accuracy</h2>
+                    </div>
+                    <div class="section-content">
+                        <canvas id="predictionAccuracyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="dashboard-section">
+            <div class="dashboard-sections">
+                <div class="main-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-bar"></i> Performance Analytics</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="traffic-chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-trophy"></i> Key Metrics</h2>
+                    </div>
+                    <div class="section-content">
+                        <div class="overview-card" style="margin-bottom: 1rem;">
+                            <h3>On-time Performance</h3>
+                            <div class="metric">94.2%</div>
+                            <div class="trend positive">Above industry standard</div>
+                        </div>
+                        <div class="overview-card" style="margin-bottom: 1rem;">
+                            <h3>Customer Satisfaction</h3>
+                            <div class="metric">4.6/5</div>
+                            <div class="trend positive">+0.2 from last month</div>
+                        </div>
+                        <div class="overview-card">
+                            <h3>Energy Efficiency</h3>
+                            <div class="metric">87%</div>
+                            <div class="trend positive">+5% improvement</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
 
   <script>
     // Clock
@@ -271,6 +529,7 @@
       }
     });
   </script>
+    <script src="admin-script.js"></script>
 </body>
 </html>
 
