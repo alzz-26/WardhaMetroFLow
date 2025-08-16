@@ -13,6 +13,7 @@ class Station(db.Model):
   connections= db.Column(db.String , nullable= True)
   lies_on= db.Column(db.String(10), nullable= False)
   location= db.Column(db.String(200), nullable=False)
+  is_active= db.Column(db.Boolean, nullable=False)
   
   start_routes= db.relationship('Route', foreign_keys="Route.start_station_id", back_populates="start_station")
   end_routes= db.relationship('Route', foreign_keys="Route.end_station_id", back_populates="end_station")
