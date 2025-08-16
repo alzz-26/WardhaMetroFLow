@@ -213,6 +213,8 @@ body {
 .trend.positive { color: var(--success-color); }
 .trend.negative { color: var(--danger-color); }
 
+
+
 /* Main Dashboard Sections */
 .dashboard-sections {
     display: grid;
