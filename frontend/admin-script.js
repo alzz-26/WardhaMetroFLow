@@ -355,3 +355,62 @@ function generateRandomAlert() {
 
 // Generate random alerts every 2 minutes
 setInterval(generateRandomAlert, 120000);
+
+
+// Clock
+    function updateClock() {
+      document.getElementById('clock').textContent = new Date().toLocaleTimeString();
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Refresh Data button
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      const passengers = Math.floor(Math.random() * 5000) + 10000;
+      const trains = Math.floor(Math.random() * 10) + 10;
+      document.getElementById('passengerCount').textContent = passengers.toLocaleString();
+      document.getElementById('trainCount').textContent = trains;
+      document.getElementById('updateTime').textContent = "Last updated: " + new Date().toLocaleTimeString();
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('light');
+    });
+
+    // Chart.js
+    const ctx = document.getElementById('trafficChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'],
+        datasets: [
+          {
+            label: 'Today',
+            data: [1200, 1900, 2300, 1800, 2400, 3000, 2000],
+            borderColor: '#00ffe5',
+            backgroundColor: 'rgba(0, 255, 229, 0.2)',
+            tension: 0.3,
+            fill: true
+          },
+          {
+            label: 'Last Week',
+            data: [1000, 1700, 2100, 1600, 2200, 2800, 1900],
+            borderColor: '#ff6b6b',
+            backgroundColor: 'rgba(255, 107, 107, 0.2)',
+            tension: 0.3,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        plugins: { 
+          legend: { labels: { color: 'white' } },
+          tooltip: { mode: 'index', intersect: false }
+        },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
