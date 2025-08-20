@@ -15,7 +15,13 @@
         <i class="fas fa-subway"></i>
           WardhaMetroFlow
       </div>
-      <ul class="nav-links">
+
+      <!-- Hamburger Icon (only visible on small screens) -->
+      <button class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="nav-links" aria-label="Toggle navigation">
         <li><a href="./passenger.html">Home</a></li>
         <li><a href="/routes">Routes</a></li>
         <li><a href="/stations">Stations</a></li>
@@ -88,7 +94,7 @@
 
     <section class="parallax">
       <div class="arch">
-        <img src="/static/Architecture.png" alt="Architecture">
+        <img src="/static/Architecture.png" alt="Architecture" loading="lazy">
         <h2>Empowering Tomorrow's Cities with Smart Public Transport.</h2>
       </div>
     </section>

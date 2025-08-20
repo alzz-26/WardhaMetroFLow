@@ -1,4 +1,15 @@
-// script.js
+
+// for toggle menu
+
+const toggle = document.getElementById("menu-toggle");
+const navLinks= document.getElementById("nav-links");
+
+toggle.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const placards = document.querySelectorAll('.placard');
   const revealObserver = new IntersectionObserver((entries, observer) => {
