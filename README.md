@@ -41,10 +41,6 @@ Whether you're contributing code, suggesting features, or just curious about the
 - [Back to Top](#top)
 
 
-## About the Project
-WardhaMetroFlow is an AI-powered metro simulation project built for the city of Wardha. It envisions a smarter public transport system for emerging smart cities by using AI-driven metro route planning and traffic prediction.
-
-
 ## Features 
 - Interactive metro route planner
 - Real-time passenger & station simulation
