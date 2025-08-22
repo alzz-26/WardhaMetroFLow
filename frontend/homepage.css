@@ -2,14 +2,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Single Solid Background */
 html, body {
     height: 100%;
-    background: hwb(208 71% 5%);   /* Solid light blue background */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fed7aa 0%, #fdba74 25%, #86efac 75%, #4ade80 100%) no-repeat fixed;
+    background-size: cover;
+    color: var(--text-primary);
 }
+
 
 /* Navigation Bar */
 .navbar {
@@ -303,14 +308,16 @@ footer {
 
 /* Features Section */
 .features {
-    background: #f5f9ff;
+    /* Changed background to a soft, complementary blue */
+    background: #e0f7fa; 
     padding: 3rem 2rem;
     text-align: center;
 }
 
 .features h2 {
     font-size: 2rem;
-    color: #333;
+    /* Changed color for better readability on the new background */
+    color: #004d40; 
     margin-bottom: 2rem;
     font-weight: bold;
 }
@@ -322,31 +329,38 @@ footer {
 }
 
 .feature-card {
-    background: white;
+    /* Kept a clean white background for contrast */
+    background: white; 
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    /* Updated box shadow for a more modern look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    /* Lighter, more pronounced shadow on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); 
 }
 
 .feature-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    /* Adjusted icon color to match the new palette */
+    color: #00796b; 
 }
 
 .feature-card h3 {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
-    color: #0056b3;
+    /* Adjusted heading color for better contrast */
+    color: #004d40; 
 }
 
 .feature-card p {
     font-size: 1rem;
-    color: #555;
+    /* Adjusted paragraph color for readability */
+    color: #333; 
     line-height: 1.5;
 }
