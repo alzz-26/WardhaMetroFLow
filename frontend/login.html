@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="xAI">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <title>WardhaMetroFlow</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fed7aa 0%, #fdba74 25%, #86efac 75%, #4ade80 100%) no-repeat fixed;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+
+        .login-container {
+            background: rgba(26, 31, 46, 0.9);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .welcome-text {
+            font-size: 24px;
+            color: #a8edea;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #2a2f3e;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4adede;
+        }
+
+        .btn-signin {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #4adede, #7873f5);
+            border: none;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-signin:hover {
+            background: linear-gradient(90deg, #3bb3b3, #5f5ecc);
+        }
+
+        .forgot-password, .request-account, .need-help {
+            display: block;
+            margin: 10px 0;
+            color: #a8edea;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password:hover, .request-account:hover, .need-help:hover {
+            text-decoration: underline;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="assets/images/wardhametroflow-logo.png" alt="WardhaMetroFlow Logo">
+        </div>
+        <div class="welcome-text">Welcome Back!</div>
+        <form action="dashboard.html" method="GET">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="demo@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="••••••••" required>
+            </div>
+            <a href="Admin.html" class="btn-signin" style="display:inline-block; width:200px; text-align:center; margin-bottom:20px;">Login</a>
+            <a href="forgotpwd.html" style="display:block; color: hsl(210, 23%, 95%); margin-bottom:10px;">Forgot Password?</a>
+            <a href="signup.html" style="display:block;  color: hsl(210, 23%, 95%);">Sign up</a>
+            <div class="terms">Terms of Use | Privacy Policy</div>
+        </form>
+    </div>
+</body>
+</html>

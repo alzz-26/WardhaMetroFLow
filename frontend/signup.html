@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fed7aa 0%, #fdba74 25%, #86efac 75%, #4ade80 100%) no-repeat fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 20px;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      width: 420px;
+      margin: 0 auto;
+    }
+
+    .signup-box h2 {
+      margin-bottom: 20px;
+      color: #6a5acd;
+    }
+
+    .signup-box input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .btn-signup {
+      width: 85%;
+      margin-top: 20px;
+      padding: 10px;
+      background: #6a5acd;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none; /* Make anchor look like button */
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-signup:hover {
+      background: #5941a9;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #6a5acd;
+      font-weight: bold;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="WardhaMetro Flow Logo" width="120">
+    </div>
+
+    <!-- Signup box -->
+    <div class="signup-box">
+      <h2>Sign Up</h2>
+      <!-- No form, just fields and redirect button -->
+      <input type="text" placeholder="Username">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Confirm Password">
+      
+      <!-- Direct redirect -->
+      <a href="signup-success.html" class="btn-signup">Sign Up</a>
+
+      <div class="links">
+        <a href="homepage.html">Back to home</a>
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
