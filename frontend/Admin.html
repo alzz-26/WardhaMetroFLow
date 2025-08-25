@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WardhaMetroFlow - Admin Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -27,6 +28,8 @@
       background: #f4f4f4;
       color: #222;
     }
+
+  /* Header style */
     header {
       display: flex;
       justify-content: space-between;
@@ -56,10 +59,14 @@
       font-size: 0.9rem;
       font-weight: 500;
     }
+
+
+    /* Main Style */
     main {
       flex: 1;
       padding: 2rem;
     }
+
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -74,6 +81,17 @@
       position: relative;
       overflow: hidden;
     }
+
+    .icon > i {
+      font-size: 1.1rem;
+      background: linear-gradient(45deg, #ea580c, #16a34a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+
+    }
+
+
     body.light .card {
       background: white;
       color: #222;
@@ -121,6 +139,17 @@
       content: "🔹";
       margin-right: 6px;
     }
+
+    .panel h2 > i {
+      font-size: 2rem;
+      position: relative;
+      top: 0.2rem;
+      background: linear-gradient(45deg, #ea580c, #16a34a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -153,7 +182,10 @@
 </head>
 <body>
   <header>
-    <div class="logo">🚈 WardhaMetroFlow - Admin</div>
+    <div class="logo">
+      <i class="fas fa-subway"></i>
+      WardhaMetroFlow - Admin
+    </div>
     <nav>
       <a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a>
       <a href="#stations" onclick="showSection('stations')">Stations</a>
@@ -166,29 +198,29 @@
 
   <main>
     <div class="top-actions">
-      <button class="btn" id="refreshBtn">🔄 Refresh Data</button>
-      <button class="btn" id="themeToggle">🌙 Toggle Theme</button>
+      <button class="btn" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh Data</button>
+      <button class="btn" id="themeToggle"><i class="fas fa-adjust"></i> Toggle Theme</button>
     </div>
 
     <section class="stats-grid">
       <div class="card">
-        <h3>👥 Total Passengers Today</h3>
+        <h3 class="icon"><i class="fas fa-users"></i> Total Passengers Today</h3>
         <p class="number" id="passengerCount">12,458</p>
         <div class="trend up">▲ +5% from yesterday</div>
         <div class="last-updated" id="updateTime"></div>
       </div>
       <div class="card">
-        <h3>🚆 Active Trains</h3>
+        <h3 class="icon"><i class="fas fa-train"></i> Active Trains</h3>
         <p class="number" id="trainCount">18</p>
         <div class="trend up">▲ +2 since morning</div>
       </div>
       <div class="card">
-        <h3>⏳ Avg. Delay</h3>
+        <h3 class="icon"><i class="fas fa-clock"></i> Avg. Delay</h3>
         <p class="number">2.4 min</p>
         <div class="trend down">▼ -0.5 min better</div>
       </div>
       <div class="card">
-        <h3>📈 Predicted Peak Hour</h3>
+        <h3 class="icon"><i class="fas fa-chart-line"></i> Predicted Peak Hour</h3>
         <p class="number">6:00 PM</p>
         <div class="trend">No change</div>
       </div>
@@ -196,11 +228,11 @@
 
     <section class="panels">
       <div class="panel">
-        <h2>📊 Live Traffic Monitor</h2>
+        <h2><i class="fas fa-traffic-light"></i> Live Traffic Monitor</h2>
         <canvas id="trafficChart" height="200"></canvas>
       </div>
       <div class="panel ai-predictions">
-        <h2>🤖 AI Predictions</h2>
+        <h2><i class="fas fa-brain"></i> AI Predictions</h2>
         <ul>
           <li>Tomorrow’s expected ridership: <strong style="color:#00ff9d">+8%</strong></li>
           <li>High congestion at <strong>Market Square</strong> station</li>
