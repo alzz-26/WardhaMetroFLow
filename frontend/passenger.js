@@ -52,6 +52,14 @@ function findRoute() {
         alert('Source and destination cannot be the same');
         return;
     }
+    
+    // Check for past or invalid departure time
+    const selectedTime = new Date(departureTime);
+    const now = new Date();
+    if (isNaN(selectedTime.getTime()) || selectedTime < now) {
+        alert('Please select a valid future departure time.');
+        return;
+    }
 
     const findRouteBtn = document.getElementById('find-route-btn');
     const originalText = findRouteBtn.innerHTML;
