@@ -177,18 +177,34 @@ We welcome all contributors — whether you're into frontend, backend, ML, or da
 
 Steps:
 1. Fork the repository
-2. Create a branch:
+2. Clone your fork
+
+```bash
+git clone https://github.com/<your-username>/WardhaMetroFlow.git
+```
+3. Create a branch:
 
 ```bash
 git checkout -b feature-name
 ```
-3. Commit your changes:
+4. Make your changes
+- Follow best practices for clean and readable code
+- Add comments where necessary
+- Keep commits small and meaningful
+
+5. Commit your changes:
 
 ```bash
-git commit -m "Added feature"
+git commit -m "Add: meaningful message for your change"
 ```
-4. Push and open a Pull Request
-5. Refer to [Contributing.md](Contributing.md) for more.
+6. Push to your fork
+```bash
+git push origin feature-name
+```
+7. Create a Pull Request (PR)
+- Go to the main repo
+- Open a PR with a clear title and description
+8. Refer to [Contributing.md](Contributing.md) for more.
 
 ###### [Back to Top](#top)
 
