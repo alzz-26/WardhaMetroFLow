@@ -38,7 +38,7 @@ body {
 
 /* Header and Navigation Styles */
 .header {
-    background: linear-gradient(135deg, #e3ae6e 0%, #aac06e 100%);
+    background: white;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin: 0 auto;
@@ -83,7 +83,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: black;
     font-weight: 1000;
     font-size: large;
     font-family: 'Playfair Display', serif;
@@ -116,7 +116,7 @@ body {
     transform: translateX(-50%) scaleX(0);
     width: 70%;
     height: 2px;
-    background: white;
+    background: var(--primary-color);
     transition: transform 0.3s ease;
 }
 
