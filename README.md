@@ -73,4 +73,144 @@ The components of **WardhaMetroFlow** interact as follows:
 3. The **Database (SQLite)** stores all metro, station, and passenger data.  
 4. The **ML Model (model.pkl)** is loaded by the backend to provide predictions for route optimization and traffic analysis.  
 
-The architecture diagram is located at:  
+![System Architecture](static/Architecture.png)
+
+[Back to Top](#top)
+
+---
+
+## Getting Started
+<a id="getting-started"></a>
+
+> **Note**: Setup instructions are a work in progress. Contributions to improve this section are welcome.
+
+To get a local copy up and running, follow these steps:
+
+### Clone the Repository
+```bash
+git clone https://github.com/GSSoC-Flow/WardhaMetroFlow.git
+cd WardhaMetroFlow
+```
+### Set Up the Backend
+```bash
+cd backend
+pip install -r requirements.txt
+# Run the backend server (example command)
+# python app.py
+```
+### Set Up the frontend
+```bash
+cd ../frontend
+npm install
+npm start.
+```
+###### [Back to Top](#top)
+
+## Project Structure
+<a id="project-structure"></a>
+```
+WardhaMetroFlow/
+│
+├── ai-models/             # AI/ML models and training scripts
+│   ├── passenger_flow_model.py
+│
+├── api_models/            # Pre-trained model files and notebooks
+│   ├── model.pkl
+│   └── train_model.ipynb
+│
+├── backend/               # Backend logic (Flask/FastAPI)
+│   ├── app.py
+│   └── models/
+│       ├── __init__.py
+│       └── models.py
+│
+├── database/              # SQLite database
+│   └── wardha.db
+│
+├── frontend/         # frontend (Passenger/Admin UI)
+│   │
+│   ├── passenger/
+│   │   └── passenger.html
+│   │
+│   └── admin/
+│       └── admin.html
+│
+├── static/                # Static assets
+│   └── Architecture.png
+│
+├── .gitignore
+├── CODE_OF_CONDUCT.md
+├── Contributing.md
+├── Contributors.md
+├── LICENSE
+├── README.md
+└──vercerl.json.
+```
+###### [Back to Top](#top)
+
+## Contributing
+<a id="contributing"></a>
+
+We welcome all contributors—whether you're interested in frontend, backend, machine learning, or documentation!
+
+### Contribution Steps
+1. **Fork** the repository.  
+2. **Create a new feature branch**:  
+   ```bash
+   git checkout -b feature/YourFeatureName
+3. **Commit your changes:**
+  ```bash
+  git commit -m "Add: YourFeatureName"
+```
+4. **Push to the branch:**
+  ```bash
+  git push origin feature/YourFeatureName
+```
+5. **Open a Pull Request.**
+👉 Please refer to **Contributing.md** for more detailed guidelines.
+
+### Join Our Community
+
+Join the discussion, get real-time updates, and collaborate with other developers on our Discord server.
+
+[**Join our Discord Server**](https://discord.gg/ZzBX3Rsa)
+### Contribution Points
+We value all contributions and assign points based on complexity and effort.  
+This helps us track and reward contributor impact.  
+
+| **Area**              | **Points** | **Difficulty Level** |
+|------------------------|------------|-----------------------|
+| Backend Development    | 30         | 3                     |
+| Map / Leaflet.js       | 30         | 3                     |
+| Frontend Development   | 15         | 2                     |
+| Documentation          | 10         | 1                     |
+
+
+###### [Back to Top](#top)
+
+## Good First Issues
+* Looking for a place to start? Here are some ideas:
+* Add a new station to the map data.
+* Create a sample JSON file for a new metro route.
+* Improve the accuracy of the route prediction model.
+* Enhance the styling of the Passenger dashboard.
+* Optimize data visualization components on the Admin dashboard.
+
+###### [Back to Top](#top)
+
+## License
+<a id="license"></a>
+
+This project is licensed under the [MIT LICENSE](LICENSE).
+See the **LICENSE file** for details.
+
+###### [Back to Top](#top)
+
+
+## Acknowledgments
+<a id="acknowledgments"></a>
+Inspired by India's Smart City Mission.
+Built with ❤️ by open-source contributors during GSSoC 2025.
+
+
+###### [Back to Top](#top)
