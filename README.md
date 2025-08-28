@@ -1,11 +1,15 @@
 # WardhaMetroFlow
 An AI-powered metro simulation designed for the city of Wardha, envisioning a smarter, data-driven public transit system.
 
+## Featured Website Image
 <img width="1880" height="1192" alt="WardhaMetroFlow Dashboard" src="https://github.com/user-attachments/assets/687c003b-e22b-4899-82f2-97927d71ced4" />
 
 <span id="top"></span>
 
 ---
+## Featured Map Structure
+
+<img width="635" height="573" alt="image" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
 
 ## Table of Contents
 - [About the Project](#about-the-project)  
