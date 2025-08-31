@@ -11,6 +11,16 @@ An AI-powered metro simulation designed for the city of Wardha, envisioning a sm
 
 <img width="635" height="573" alt="image" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
 
+[Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)
+
+## Join Our Community
+
+Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
+
+[**Join our Discord Server**](https://discord.gg/ZzBX3Rsa)  
+
+Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
+
 ## Table of Contents
 - [About the Project](#about-the-project)  
 - [Key Features](#features)  
