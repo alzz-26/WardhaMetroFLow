@@ -1,0 +1,41 @@
+.
+├── ai-models
+│   └── passenger_flow_model.py
+├── api_models
+│   └── train_model.ipynb
+├── backend
+│   ├── app.py
+│   ├── main.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── models.py
+│   ├── requirements.txt
+│   ├── routers
+│   │   ├── __init__.py
+│   │   ├── passenger_flow.py
+│   │   └── stations.py
+│   └── services
+│       ├── __init__.py
+│       └── metro_service.py
+├── code_of_conduct.md
+├── Contributing.md
+├── Contributors.md
+├── database
+│   └── wardha.db
+├── frontend
+│   ├── about.css
+│   ├── about.html
+│   ├── about.js
+│   ├── Admin.html
+│   ├── admin-script.js
+│   ├── admin-styles.css
+│   └── passenger.html
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── static
+│   └── Architecture.png
+├── structure.txt
+└── vercel.json
+
+10 directories, 29 files
