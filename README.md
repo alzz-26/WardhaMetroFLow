@@ -59,9 +59,8 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
 ## Tech Stack 
 
 ### Frontend
-- React.js
-- HTML / CSS / JavaScript
-- Leaflet.js (Map rendering)
+-Static HTML, CSS, JavaScript (Passenger/Admin dashboards)
+-Leaflet.js (Map rendering)
 
 ### Backend
 - Python (Flask / FastAPI)
@@ -97,13 +96,15 @@ WardhaMetroFlow is an AI-powered metro simulation project built for the city of 
    pip install -r requirements.txt
    ```
 
-3. Navigate to frontend and run React app:
+3. Navigate to frontend and run app:
 
    ```bash
-   cd ../frontend
-   npm install
-   npm start
+   You can open the following files directly in your browser:
+  -frontend/passenger/passenger.html
+  -frontend/admin/admin.html
    ```
+##⚠️ Note: npm install are outdated, since no package.json exists in frontend/.
+If you’d like, you can contribute by helping migrate this static frontend to React in the future 🚀   
 
 ###### [Back to Top](#top)
 
