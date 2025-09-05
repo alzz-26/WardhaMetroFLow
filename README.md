@@ -6,7 +6,7 @@ An AI-powered metro simulation designed for the city of Wardha, envisioning a sm
 
 <span id="top"></span>
 
----
+
 ## Featured Map Structure
 
 <img width="635" height="573" alt="image" src="https://github.com/user-attachments/assets/62e5754c-a74a-4926-a3f6-af0b012091fa" />
@@ -32,7 +32,7 @@ Whether you're contributing code, suggesting features, or just curious about the
 - [License](#license)  
 - [Acknowledgments](#acknowledgments)  
 
----
+
 
 ## About the Project
 <a id="about-the-project"></a>
@@ -46,7 +46,7 @@ It offers two distinct, interactive views:
 
 [Back to Top](#top)
 
----
+
 
 ## Key Features
 <a id="features"></a>
@@ -64,7 +64,7 @@ It offers two distinct, interactive views:
 
 [Back to Top](#top)
 
----
+
 
 ## Tech Stack
 <a id="tech-stack"></a>
@@ -79,7 +79,7 @@ It offers two distinct, interactive views:
 
 [Back to Top](#top)
 
----
+
 
 ## System Architecture
 <a id="system-architecture"></a>
@@ -98,14 +98,14 @@ The components of **WardhaMetroFlow** interact as follows:
   -frontend/passenger/passenger.html
   -frontend/admin/admin.html
    ```
-##⚠️ Note: npm install are outdated, since no package.json exists in frontend/.
-If you’d like, you can contribute by helping migrate this static frontend to React in the future 🚀   
+##Note: npm install are outdated, since no package.json exists in frontend/.
+If you’d like, you can contribute by helping migrate this static frontend to React in the future    
 =======
 ![System Architecture](static/Architecture.png)
 
 [Back to Top](#top)
 
----
+
 
 ## Getting Started
 <a id="getting-started"></a>
@@ -195,7 +195,7 @@ We welcome all contributors—whether you're interested in frontend, backend, ma
   git push origin feature/YourFeatureName
 ```
 5. **Open a Pull Request.**
-👉 Please refer to **Contributing.md** for more detailed guidelines.
+Please refer to **Contributing.md** for more detailed guidelines.
 
 ### Join Our Community
 
@@ -238,7 +238,7 @@ See the **LICENSE file** for details.
 ## Acknowledgments
 <a id="acknowledgments"></a>
 Inspired by India's Smart City Mission.
-Built with ❤️ by open-source contributors during GSSoC 2025.
+Built with love by open-source contributors during GSSoC 2025.
 
 
 ###### [Back to Top](#top)
