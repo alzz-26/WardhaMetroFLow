@@ -20,7 +20,7 @@ An AI-powered metro simulation designed for the city of Wardha, envisioning a sm
 
 Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
 
-[![Join our Discord](https://img.shields.io/badge/Join%20Discord-7289DA?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/GGpWdd639J)
+[Join our Discord](https://discord.gg/GGpWdd639J)
 
 Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
 
