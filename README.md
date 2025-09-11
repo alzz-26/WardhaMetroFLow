@@ -1,6 +1,6 @@
 <div align="center">
   
-# 🚇 WardhaMetroFlow
+#  WardhaMetroFlow
 An AI-powered metro simulation designed for the city of Wardha, envisioning a smarter, data-driven public transit system.
 </div>
 
@@ -215,6 +215,6 @@ Inspired by India's Smart City Mission.
 Built with love by open-source contributors during GSSoC 2025.
 
 <p align="center">
-  <a href="#top">⬆️ Back to Top</a>
+  <a href="#top"> Back to Top</a>
 </p>
 
