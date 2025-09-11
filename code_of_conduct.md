@@ -38,7 +38,7 @@ The following will not be tolerated:
 - Disruptive or disrespectful conduct in discussions.
 - Off-topic or self-promotional content without relevance.
 
----
+
 
 ***Reporting Violations***
 
@@ -47,7 +47,7 @@ If you encounter or witness any violations, please report them to:
 - GSSoC Organizers (through official channels).
 - All reports will be handled confidentially and addressed promptly.
 
----
+
 
 ***Enforcement***
 
@@ -56,7 +56,7 @@ Violations may result in:
 - Temporary suspension from project participation.
 - Permanent removal from the community in severe cases.
 
----
+
 
 ***Contributor Responsibilities***
 
