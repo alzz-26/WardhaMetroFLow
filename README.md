@@ -1,3 +1,5 @@
+Note: We are taking break from 14th Sep to 26th Seo due to our college exams so we won't be merging or assigning any of the prs or issues!
+
 <div align="center">
   
 #  WardhaMetroFlow
