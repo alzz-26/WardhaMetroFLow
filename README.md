@@ -1,3 +1,4 @@
+
 <div align="center">
   
 #  WardhaMetroFlow
@@ -16,11 +17,12 @@ An AI-powered metro simulation designed for the city of Wardha, envisioning a sm
 
 [Map Link](https://www.google.com/maps/d/u/3/edit?mid=1c4r4UD15ZKHhCvG5O3ZN_JOQdhHPspM&usp=sharing)
 
+
 ## Join Our Community
 
-Be part of the discussion, get real-time updates, and collaborate with other contributors on **WardhaMetroFlow**.
+Join the discussion, get real-time updates, and collaborate with other developers on our Discord server.
 
-[Join our Discord](https://discord.gg/GGpWdd639J)
+[![Join our Discord](https://img.shields.io/badge/Join%20Discord-7289DA?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/GGpWdd639J)
 
 Whether you're contributing code, suggesting features, or just curious about the project, you're welcome!
 
@@ -172,11 +174,6 @@ We welcome all contributors—whether you're interested in frontend, backend, ma
 5. **Open a Pull Request.**
 Please refer to **Contributing.md** for more detailed guidelines.
 
-### Join Our Community
-
-Join the discussion, get real-time updates, and collaborate with other developers on our Discord server.
-
-[![Join our Discord](https://img.shields.io/badge/Join%20Discord-7289DA?logo=discord&logoColor=white&style=for-the-badge)](https://discord.gg/GGpWdd639J)
 
 ### Contribution Points
 We value all contributions and assign points based on complexity and effort.  
